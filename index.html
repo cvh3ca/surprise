@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour toi</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffecd2, #fcb69f);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    font-family: Georgia, serif;
+    position: relative;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  h1 {
+    color: white;
+    font-size: 2.8rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    z-index: 10;
+    margin-bottom: 10px;
+    animation: appear 1.5s ease;
+  }
+  p.sub {
+    color: white;
+    font-size: 1.1rem;
+    z-index: 10;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    animation: appear 2s ease;
+  }
+  @keyframes appear {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 10;
+  }
+  a.btn {
+    text-decoration: none;
+    background: white;
+    color: #ff6b6b;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  a.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .heart {
+    position: absolute;
+    color: white;
+    opacity: 0.6;
+    font-size: 1.5rem;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>Pour toi, Simon 💫</h1>
+  <p class="sub">Une petite surprise rien que pour toi</p>
+
+  <div class="buttons">
+    <a class="btn" href="histoire.html">Notre histoire</a>
+    <a class="btn" href="merci.html">Un mot pour toi</a>
+  </div>
+
+<script>
+  const body = document.body;
+  const emojis = ['💛','✨','💫','💕'];
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+    heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+    body.appendChild(heart);
+    setTimeout(() => heart.remove(), 10000);
+  }, 600);
+</script>
+
+</body>
+</html>
